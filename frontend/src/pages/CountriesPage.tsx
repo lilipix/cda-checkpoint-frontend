@@ -2,6 +2,7 @@ import { queryCountries } from "@/api/countries";
 import { useQuery } from "@apollo/client";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Countries } from "@/types";
+import { Link } from "react-router-dom";
 
 const CountriesPage = () => {
   const { data, loading, error } = useQuery<Countries>(queryCountries, {
@@ -15,14 +16,13 @@ const CountriesPage = () => {
   return (
     <div className="flex flex-wrap justify-center gap-4 m-4">
       {countries?.map((country) => (
-        <div>
-          <Card
-            key={country.name}
-            className="h-[60px] w-auto flex justify-center items-center !gap-2 p-4"
-          >
-            <CardTitle className="!text-sm">{country.name}</CardTitle>
-            <CardContent>{country.emoji}</CardContent>
-          </Card>
+        <div key={country.id}>
+          <Link to={`/countries/${country.code}`}>
+            <Card className="h-[60px] w-auto flex justify-center items-center !gap-2 p-4">
+              <CardTitle className="!text-sm">{country.name}</CardTitle>
+              <CardContent>{country.emoji}</CardContent>
+            </Card>
+          </Link>
         </div>
       ))}
     </div>
