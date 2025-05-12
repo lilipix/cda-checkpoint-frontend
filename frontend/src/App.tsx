@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { HomePage } from "./pages/Home";
 import { PageLayout } from "./components/Layout";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import CountriesPage from "./pages/CountriesPage";
+import CountriesPage from "./components/Countries";
 import CountryPage from "./pages/CountryPage";
 
 const client = new ApolloClient({

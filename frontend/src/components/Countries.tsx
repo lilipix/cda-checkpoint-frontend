@@ -1,13 +1,17 @@
 import { queryCountries } from "@/api/countries";
 import { useQuery } from "@apollo/client";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Countries } from "@/types";
-import { Link } from "react-router-dom";
 
-const CountriesPage = () => {
-  const { data, loading, error } = useQuery<Countries>(queryCountries, {
-    fetchPolicy: "cache-and-network",
-  });
+import { Link } from "react-router-dom";
+import { getCountriesResponse } from "@/types";
+
+const Countries = () => {
+  const { data, loading, error } = useQuery<getCountriesResponse>(
+    queryCountries,
+    {
+      fetchPolicy: "cache-and-network",
+    }
+  );
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -29,4 +33,4 @@ const CountriesPage = () => {
   );
 };
 
-export default CountriesPage;
+export default Countries;

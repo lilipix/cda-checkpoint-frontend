@@ -13,6 +13,6 @@ export type getCountryResponse = {
   country: Country;
 };
 
-export type Countries = {
+export type getCountriesResponse = {
   countries: Omit<Country, "continent">[];
 };
